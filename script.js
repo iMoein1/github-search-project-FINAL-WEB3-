@@ -178,12 +178,14 @@ function safe(value, fallback=""){
 // توضیح: اطلاعات کاربر با جزئیات مناسب و لینک‌ها نمایش داده می‌شود.
 
 function renderProfile(user) {
-  const name = user.name || user.login;
-  const bio = user.bio || "No bio available.";
-  const email = user.email || "No public email";
-  const location = user.location ? `📍 ${user.location}` : "";
-  const company = user.company ? `🏢 ${user.company}` : "";
-  const blog = user.blog ? normalizeUrl(user.blog) : null;
+  const name = safe(user.name , user.login);
+  const bio = safe(user.bio , "No bio available.");
+  const email =safe( user.email , "No public email");
+  const location =safe (user.location )? `📍 ${user.location}` : "";
+  const company = safe(user.company) ? `🏢 ${user.company}` : "";
+  const blograw = safe(user.blog, null);
+  const blog = blograw ?
+   normalizeUrl(blograw) : null;
 
   profileCard.innerHTML = `
     <img src="${user.avatar_url}"
