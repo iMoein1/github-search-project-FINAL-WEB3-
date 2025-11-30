@@ -1,14 +1,22 @@
 const GITHUB_API_BASE = 'https://api.github.com';
+// توکن شخصی (PAT) شما برای افزایش محدودیت نرخ (Rate Limit) از 60 به 5000 درخواست در ساعت.
+const AUTH_TOKEN = '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'; 
 
 /**
- * A general fetch utility that handles standard GitHub API errors.
+ * A general fetch utility that handles standard GitHub API errors and authentication.
  */
 async function apiFetch(url) {
-    const response = await fetch(url);
+    // 1. ایجاد هدر احراز هویت
+    const headers = {
+        'Authorization': `token ${AUTH_TOKEN}`
+    };
+    
+    // 2. ارسال درخواست با هدر توکن
+    const response = await fetch(url, { headers }); 
 
     if (response.status === 403) {
         // Handling Rate Limit
-        throw new Error('RATE_LIMIT: API rate limit exceeded. Please use OAuth for higher limits.');
+        throw new Error('RATE_LIMIT: API rate limit exceeded (even with token). Check token permissions or expiration.');
     }
     
     // Handle other server errors (e.g., 500) but ignore 404 here

@@ -31,32 +31,22 @@ class SearchApp {
         this.addEventListeners();
     }
     
-    // ===============================================
-    // 2. UI Helper Methods
-    // ===============================================
-
-    /** Displays message with specific type (error, success, info). */
+    // ... (بقیه متدهای UI و هندلینگ پیشنهادات: displayMessage, clearMessages, clearSuggestions, handleSuggestions) ...
     displayMessage(message, type = 'info') {
         this.dom.message.innerHTML = message;
         this.dom.message.className = `message-area ${type}`;
         this.dom.message.classList.remove('hidden');
     }
 
-    /** Clears the message area. */
     clearMessages() {
         this.dom.message.classList.add('hidden');
         this.dom.message.innerHTML = '';
     }
 
-    /** Clears and hides the suggestion dropdown. */
     clearSuggestions() {
         this.dom.suggestions.innerHTML = '';
         this.dom.suggestions.classList.add('hidden');
     }
-
-    // ===============================================
-    // 3. Suggestions Handler (Debounced)
-    // ===============================================
 
     async handleSuggestions(searchTerm) {
         this.clearSuggestions();
@@ -71,7 +61,6 @@ class SearchApp {
                 item.className = 'suggestion-item';
                 item.textContent = username;
                 
-                // Clicking a suggestion triggers the main search
                 item.addEventListener('click', () => {
                     this.dom.input.value = username;
                     this.handleMainSearch(username); 
@@ -109,7 +98,7 @@ class SearchApp {
             // User found
             this.displayMessage(`Success: User "${username}" found!`, 'success');
             
-            // Save data for the next page/component (your teammate's part)
+            // Save data for the next page/component
             localStorage.setItem('github_user_profile', JSON.stringify(userData));
             
             // Render profile content (simulating navigation)
