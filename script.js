@@ -9,6 +9,7 @@ const suggestionsList = document.getElementById("suggestions-list");
 const profileContainer = document.getElementById("profile-container");
 const profileCard = document.getElementById("profile-card");
 const reposContainer = document.getElementById("repos-container");
+const email = user.email || "No public email";
 
 // ---------------- مدیریت تم با ذخیره در localStorage ----------------
 // توضیح: تم انتخابی کاربر ذخیره می‌شود تا در بازدیدهای بعدی حفظ گردد.
