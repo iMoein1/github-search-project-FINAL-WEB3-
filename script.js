@@ -188,6 +188,7 @@ function renderProfile(user) {
       </div>
       <p>${bio}</p>
       <p>${[location, company].filter(Boolean).join(" | ")}</p>
+      <p><strong>Email:</strong>${email}</p>
       <p>
         <a href="${user.html_url}" target="_blank" rel="noopener">View on GitHub</a>
         ${blog ? ` | <a href="${blog}" target="_blank" rel="noopener">Website</a>` : ""}
