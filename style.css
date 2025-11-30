@@ -1,0 +1,159 @@
+/* CSS Variables for Theme Management */
+:root {
+    --primary-color: #007bff;
+    --error-color: #dc3545; 
+    --info-color: #ffc107;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Light Theme Variables (Default) */
+.light-theme {
+    --background-color: #f4f7f9;
+    --text-color: #333;
+    --card-background: #ffffff;
+    --input-background: #f8f8f8;
+    --input-border: #ddd;
+    --suggestion-hover: #e0f0ff;
+}
+
+/* Dark Theme Variables */
+.dark-theme {
+    --background-color: #121212;
+    --text-color: #f0f0f0;
+    --card-background: #1e1e1e;
+    --input-background: #2c2c2c;
+    --input-border: #555;
+    --suggestion-hover: #3a3a3a;
+}
+
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+    /* Direction remains LTR for standard English */
+    box-sizing: border-box;
+}
+
+header {
+    background-color: var(--card-background);
+    padding: 20px 40px;
+    border-bottom: 1px solid var(--input-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Search and Input Styles */
+.search-section, .profile-container {
+    background-color: var(--card-background);
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+#search-form {
+    display: flex;
+    gap: 15px;
+}
+
+.search-input-container {
+    flex-grow: 1;
+    position: relative; 
+}
+
+#username-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--input-border);
+    border-radius: var(--border-radius);
+    background-color: var(--input-background);
+    color: var(--text-color);
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+
+#search-button, #theme-toggle {
+    padding: 12px 25px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#search-button:hover, #theme-toggle:hover {
+    background-color: #0056b3;
+}
+
+/* Suggestion List Styles */
+.suggestions-list {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    background-color: var(--card-background);
+    border: 1px solid var(--input-border);
+    border-top: none;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.suggestion-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--input-border);
+    transition: background-color 0.15s;
+}
+
+.suggestion-item:last-child {
+    border-bottom: none;
+}
+
+.suggestion-item:hover {
+    background-color: var(--suggestion-hover);
+}
+
+/* Message Area Styles */
+.message-area {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: var(--border-radius);
+    font-weight: bold;
+}
+
+.error {
+    background-color: rgba(220, 53, 69, 0.1); 
+    color: var(--error-color);
+    border: 1px solid var(--error-color);
+}
+
+.success {
+    background-color: rgba(40, 167, 69, 0.1);
+    color: #28a745;
+    border: 1px solid #28a745;
+}
+
+.info {
+    background-color: rgba(255, 193, 7, 0.1);
+    color: var(--info-color);
+    border: 1px solid var(--info-color);
+}
+
+/* Utility Class */
+.hidden {
+    display: none !important;
+}
