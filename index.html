@@ -1,42 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional GitHub Profile Search</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Professional GitHub Profile Searcher</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body class="light-theme">
-    <header>
-        <h1>🔍 GitHub Profile Searcher</h1>
-        <button id="theme-toggle">Toggle Theme (Dark/Light)</button>
-    </header>
+  <header>
+    <h1>🔍 GitHub Profile Searcher</h1>
+    <div class="header-actions">
+      <button id="theme-toggle" aria-label="Toggle theme">Toggle Theme (Dark/Light)</button>
+    </div>
+  </header>
 
-    <main>
-        <div class="search-section">
-            <form id="search-form">
-                <div class="search-input-container">
-                    <input 
-                        type="text" 
-                        id="username-input" 
-                        placeholder="Enter GitHub username..."
-                        autocomplete="off"
-                    >
-                    <div id="suggestions-list" class="suggestions-list hidden">
-                        </div>
-                </div>
-                <button type="submit" id="search-button">Search</button>
-            </form>
-
-            <div id="message-area" class="message-area hidden"></div>
+  <main>
+    <section class="search-section" aria-label="Search section">
+      <form id="search-form" novalidate>
+        <div class="search-input-container">
+          <input
+            type="text"
+            id="username-input"
+            placeholder="Enter a GitHub username..."
+            aria-autocomplete="list"
+            aria-controls="suggestions-list"
+            autocomplete="off"
+          />
+          <div id="suggestions-list" class="suggestions-list hidden" role="listbox"></div>
         </div>
-        
-        <section id="profile-container" class="profile-container hidden">
-            <div id="profile-card">
-                </div>
-        </section>
-    </main>
+        <button type="submit" id="search-button">Search</button>
+      </form>
 
-    <script type="module" src="script.js"></script>
+      <div id="message-area" class="message-area hidden" role="alert"></div>
+    </section>
+
+    <section id="profile-container" class="profile-container hidden" aria-label="User profile">
+      <div id="profile-card"></div>
+      <div id="repos-container" class="repos-container"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p class="info-message">
+      Tip: Type a few characters to see suggestions. If you hit the API rate limit, try again in a few minutes.
+    </p>
+  </footer>
+
+  <script type="module" src="script.js"></script>
+  <script src="util/api.js"></script>
+  <script src="util/helpers.js"></script>
 </body>
 </html>
