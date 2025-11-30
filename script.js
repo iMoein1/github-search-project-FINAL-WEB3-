@@ -9,7 +9,7 @@ const suggestionsList = document.getElementById("suggestions-list");
 const profileContainer = document.getElementById("profile-container");
 const profileCard = document.getElementById("profile-card");
 const reposContainer = document.getElementById("repos-container");
-const email = user.email || "No public email";
+
 
 // ---------------- مدیریت تم با ذخیره در localStorage ----------------
 // توضیح: تم انتخابی کاربر ذخیره می‌شود تا در بازدیدهای بعدی حفظ گردد.
@@ -173,6 +173,7 @@ function renderSkeleton() {
 function renderProfile(user) {
   const name = user.name || user.login;
   const bio = user.bio || "No bio available.";
+  const email = user.email || "No public email";
   const location = user.location ? `📍 ${user.location}` : "";
   const company = user.company ? `🏢 ${user.company}` : "";
   const blog = user.blog ? normalizeUrl(user.blog) : null;
