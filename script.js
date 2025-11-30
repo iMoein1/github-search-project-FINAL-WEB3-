@@ -180,7 +180,10 @@ function renderProfile(user) {
   const blog = user.blog ? normalizeUrl(user.blog) : null;
 
   profileCard.innerHTML = `
-    <img src="${user.avatar_url}" alt="${user.login}" />
+    <img src="${user.avatar_url}"
+     alt="${user.login}"
+    onerror="this.onerror=null; this.src+`${fallbackAvatar}`;"
+    />
     <div class="profile-meta">
       <h2>${name}</h2>
       <div class="badges">
