@@ -168,9 +168,15 @@ function renderSkeleton() {
     <div class="skeleton skeleton-line" style="width: 90%; height: 18px;"></div>
   `;
 }
-
+// ضد خطا
+function safe(value, fallback=""){
+  return(value===null || value===undefined || value==="" || value==="null")
+  ? fallback
+  : value;
+}
 // ---------------- رندر پروفایل ----------------
 // توضیح: اطلاعات کاربر با جزئیات مناسب و لینک‌ها نمایش داده می‌شود.
+
 function renderProfile(user) {
   const name = user.name || user.login;
   const bio = user.bio || "No bio available.";
