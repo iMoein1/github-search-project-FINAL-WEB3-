@@ -108,6 +108,17 @@ main {
   flex-grow: 1;
   position: relative;
 }
+.search-section {
+  position: relative;
+  z-index: 1; /* تا روی پس‌زمینه متحرک باشد */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-section:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
 
 /* ------------------- استایل ورودی ------------------- */
 #username-input {
