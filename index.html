@@ -7,27 +7,13 @@
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body class="light-theme">
-  <header class="gh-header">
-    <div class="gh-header-inner">
-      <div class="gh-left">
-        <a href="#" class="gh-logo">GitFinder</a>
-        <nav class="gh-nav" aria-label="Main navigation">
-          <a href="#" class="gh-nav-link">Overview</a>
-          <a href="#" class="gh-nav-link">Repositories</a>
-          <a href="#" class="gh-nav-link">Issues</a>
-        </nav>
-      </div>
-  
-      <div class="gh-right">
-        <button id="theme-toggle" class="gh-btn gh-btn-ghost" aria-label="Toggle theme">🌗</button>
-        <!-- optional: profile/avatar placeholder
-        <button class="gh-avatar-btn" aria-label="Profile">
-          <img src="..." alt="Me" />
-        </button>
-        -->
-      </div>
+  <header>
+    <h1>🔍 GitHub Profile Searcher</h1>
+    <div class="header-actions">
+      <button id="theme-toggle" aria-label="Toggle theme">Toggle Theme (Dark/Light)</button>
     </div>
   </header>
+
   <main>
     <section class="search-section" aria-label="Search section">
       <form id="search-form" novalidate>

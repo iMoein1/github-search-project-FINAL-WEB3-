@@ -346,3 +346,17 @@ footer {
   padding: 0 20px;
   color: #6b7280;
 }
+h1 {
+  font-size: 3rem;
+  background: linear-gradient(270deg, #ff6ec4, #7873f5, #42f5ef, #ff6ec4);
+  background-size: 600% 600%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 5s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
