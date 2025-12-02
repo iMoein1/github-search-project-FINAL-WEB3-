@@ -169,8 +169,8 @@ function renderSkeleton() {
   `;
 }
 // ضد خطا
-function safe(value, fallback=""){
-  return(value===null || value===undefined || value==="" || value==="null")
+function safe( value, fallback="" ){
+  return( value === null || value === zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzundefined || value==="" || value==="null")
   ? fallback
   : value;
 }
