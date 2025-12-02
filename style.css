@@ -122,19 +122,27 @@ main {
 
 /* ------------------- استایل ورودی ------------------- */
 #username-input {
+  
+  background: rgb(225, 225,225 ,0.08);
+  backdrop-filter: blur(10px);
   width: 100%;
-  padding: 12px 15px;
+  padding: 14px 18px;
   border: 1px solid var(--input-border);
   border-radius: var(--border-radius);
-  background-color: var(--input-background);
   color: var(--text-color);
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+  font-size: 18px;
+  outline: none;
+  transition: all 0.25s ease;
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -ms-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
 }
 
 #username-input:focus {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.35);
-  outline: none;
+  border-color:#4fa3ff ;
+  box-shadow: 0 0 15px rgb(80, 170, 255,0.4);
 }
 
 /* ------------------- دکمه‌ها ------------------- */
