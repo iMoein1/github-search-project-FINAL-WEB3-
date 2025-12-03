@@ -179,7 +179,7 @@ function renderSkeleton() {
 }
 // ضد خطا
 function safe( value, fallback="" ){
-  return( value === null || value === zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzundefined || value==="" || value==="null")
+  return( value === null || value === undefined || value==="" || value==="null")
   ? fallback
   : value;
 }
@@ -199,7 +199,7 @@ function renderProfile(user) {
   profileCard.innerHTML = `
     <img src="${user.avatar_url}"
      alt="${user.login}"
-    onerror="this.onerror=null; this.src+`${fallbackAvatar}`;"
+    onerror="this.onerror=null; this.src=`${fallbackAvatar}`;"
     />
     <div class="profile-meta">
       <h2>${name}</h2>
