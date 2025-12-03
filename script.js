@@ -9,6 +9,8 @@ const suggestionsList = document.getElementById("suggestions-list");
 const profileContainer = document.getElementById("profile-container");
 const profileCard = document.getElementById("profile-card");
 const reposContainer = document.getElementById("repos-container");
+const fallbackAvatar = "assets/default-avatar.png"
+
 
 // ---------------- مدیریت تم با ذخیره در localStorage ----------------
 // توضیح: تم انتخابی کاربر ذخیره می‌شود تا در بازدیدهای بعدی حفظ گردد.
@@ -23,9 +25,18 @@ function initTheme() {
 
 function toggleTheme() {
   const isDark = body.classList.contains("dark-theme");
-  body.classList.toggle("dark-theme", !isDark);
-  body.classList.toggle("light-theme", isDark);
-  localStorage.setItem("theme", isDark ? "light" : "dark");
+
+  if (isDark) {
+    // اگر در حالت سورمه‌ای بود → برو به سفید
+    body.classList.remove("dark-theme");
+    body.classList.add("light-theme");
+    localStorage.setItem("theme", "light");
+  } else {
+    // اگر سفید بود → برو به سورمه‌ای
+    body.classList.remove("light-theme");
+    body.classList.add("dark-theme");
+    localStorage.setItem("theme", "dark");
+  }
 }
 
 // ---------------- پیام‌رسان عمومی ----------------
@@ -166,18 +177,30 @@ function renderSkeleton() {
     <div class="skeleton skeleton-line" style="width: 90%; height: 18px;"></div>
   `;
 }
-
+// ضد خطا
+function safe( value, fallback="" ){
+  return( value === null || value === undefined || value==="" || value==="null")
+  ? fallback
+  : value;
+}
 // ---------------- رندر پروفایل ----------------
 // توضیح: اطلاعات کاربر با جزئیات مناسب و لینک‌ها نمایش داده می‌شود.
+
 function renderProfile(user) {
-  const name = user.name || user.login;
-  const bio = user.bio || "No bio available.";
-  const location = user.location ? `📍 ${user.location}` : "";
-  const company = user.company ? `🏢 ${user.company}` : "";
-  const blog = user.blog ? normalizeUrl(user.blog) : null;
+  const name = safe(user.name , user.login);
+  const bio = safe(user.bio , "No bio available.");
+  const email =safe( user.email , "No public email");
+  const location =safe (user.location )? `📍 ${user.location}` : "";
+  const company = safe(user.company) ? `🏢 ${user.company}` : "";
+  const blograw = safe(user.blog, null);
+  const blog = blograw ?
+   normalizeUrl(blograw) : null;
 
   profileCard.innerHTML = `
-    <img src="${user.avatar_url}" alt="${user.login}" />
+    <img src="${user.avatar_url}"
+     alt="${user.login}"
+    onerror="this.onerror=null; this.src=`${fallbackAvatar}`;"
+    />
     <div class="profile-meta">
       <h2>${name}</h2>
       <div class="badges">
@@ -187,6 +210,7 @@ function renderProfile(user) {
       </div>
       <p>${bio}</p>
       <p>${[location, company].filter(Boolean).join(" | ")}</p>
+      <p><strong>Email:</strong>${email}</p>
       <p>
         <a href="${user.html_url}" target="_blank" rel="noopener">View on GitHub</a>
         ${blog ? ` | <a href="${blog}" target="_blank" rel="noopener">Website</a>` : ""}

@@ -8,15 +8,28 @@
 </head>
 <body class="light-theme">
   <header>
-    <h1>🔍 GitHub Profile Searcher</h1>
+    <h1 class="h1-search">🔍 GitHub Profile Searcher</h1>
     <div class="header-actions">
-      <button id="theme-toggle" aria-label="Toggle theme">Toggle Theme (Dark/Light)</button>
+      <button id="theme-toggle" aria-label="Toggle theme"><img src="assets/images.png" ></button>
+     <nav  >
+        <a>Profile</a>
+        <a>Repositories</a>
+        <a>About</a>
+
+      </nav>
+
     </div>
   </header>
 
   <main>
+    <section class="h1-section">
+      <h1 class="h1-1">Discover GitHub </h1>
+      <h1 class="h1-2">Developers</h1>
+    </section>
     <section class="search-section" aria-label="Search section">
+
       <form id="search-form" novalidate>
+    
         <div class="search-input-container">
           <input
             type="text"
@@ -27,11 +40,14 @@
             autocomplete="off"
           />
           <div id="suggestions-list" class="suggestions-list hidden" role="listbox"></div>
+          <button type="submit" id="search-button">Search user</button>
         </div>
-        <button type="submit" id="search-button">Search</button>
+        
+       
       </form>
 
       <div id="message-area" class="message-area hidden" role="alert"></div>
+      
     </section>
 
     <section id="profile-container" class="profile-container hidden" aria-label="User profile">

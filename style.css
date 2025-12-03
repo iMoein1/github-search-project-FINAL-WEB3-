@@ -14,9 +14,9 @@
 
 /* ------------------- تم روشن ------------------- */
 .light-theme {
-  --background-color: #f4f7f9;
-  --text-color: #1f2937;
-  --card-background: #ffffff;
+    --background-color: #ffffff;
+    --text-color: #1f2937;
+    --card-background: #ffffff;
   --input-background: #f8f8f8;
   --input-border: #ddd;
   --suggestion-hover: #e8f2ff;
@@ -42,24 +42,24 @@
 }
 
 body {
-  font-family: var(--font-family);
-  background-color: var(--background-color);
-  color: var(--text-color);
-  margin: 0;
-  padding: 0;
-  transition: background-color var(--transition-slow) ease, color var(--transition-slow) ease;
+  position: relative;
+  overflow-x: hidden;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: var(--font-family);
+
 }
 
 header {
-  background-color: var(--card-background);
-  padding: 20px 40px;
-  border-bottom: 1px solid var(--input-border);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 50;
+  background-color: #f8f1ec;
+box-shadow: #ddd;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+border-bottom: 2px solid rgb(170, 165, 155);
+
 }
 
 .header-actions {
@@ -72,13 +72,37 @@ main {
   margin: 40px auto;
   padding: 0 20px;
 }
+/* ---------------------- منوی بالا ---------------------- */
+nav{
+ display: flex;
+ justify-content: center;
+margin-left: -600px;
+gap: 20px;
+margin-top: -50px;
+z-index: 1000;
+}
+/*---------------------*/
+.h1-section{
+  z-index: 1000;
+  position: absolute;
+  font-size: 25px;
+}
+.h1-1{
+ margin-left: 250px ;
+  margin-top: -200px;
 
+}
+.h1-2{
+  margin-top: -20px;
+  margin-left:300px ;
+  color: #088d70;
+}
 /* ------------------- بخش جستجو و کانتینر پروفایل ------------------- */
 .search-section,
 .profile-container {
   background-color: var(--card-background);
   padding: 24px;
-  margin-bottom: 24px;
+margin-top: 400px;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   transition: box-shadow var(--transition-fast);
@@ -95,43 +119,72 @@ main {
   flex-grow: 1;
   position: relative;
 }
+.search-section {
+  position: relative;
+  z-index: 1; /* تا روی پس‌زمینه متحرک باشد */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-section:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
 
 /* ------------------- استایل ورودی ------------------- */
 #username-input {
+  
+  background: rgb(225, 225,225 ,0.08);
+  backdrop-filter: blur(10px);
   width: 100%;
-  padding: 12px 15px;
+  padding: 14px 18px;
   border: 1px solid var(--input-border);
   border-radius: var(--border-radius);
-  background-color: var(--input-background);
   color: var(--text-color);
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+  font-size: 18px;
+  outline: none;
+  transition: all 0.25s ease;
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -ms-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
 }
 
 #username-input:focus {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.35);
-  outline: none;
+  border-color:#4fa3ff ;
+  box-shadow: 0 0 15px rgb(80, 170, 255,0.4);
 }
 
 /* ------------------- دکمه‌ها ------------------- */
-#search-button,
-#theme-toggle {
-  padding: 12px 18px;
-  background: linear-gradient(135deg, var(--primary-color), #0056b3);
-  color: white;
-  border: none;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  font-weight: 700;
-  letter-spacing: 0.2px;
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
+#theme-toggle{
+  height: 28px;
+  width: 34px;
+  margin-left: 1400px;
+  margin-top: -60px;
+  padding: 0;
+  border: 1px solid rgb(50, 48, 48);
+  border-radius: 3px ;
+  overflow: hidden;
+  background: none;
+  -webkit-border-radius: 3px ;
+  -moz-border-radius: 3px ;
+  -ms-border-radius: 3px ;
+  -o-border-radius: 3px ;
+ 
 }
-
-#search-button:hover,
-#theme-toggle:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
-  filter: brightness(1.05);
+#theme-toggle img{
+  width: 30px;
+  height: 20px;
+  
+ 
+}
+#search-form button:hover { transform:translateY(-3px) ;
+   -webkit-transform:translateY(-3px) ;
+    -moz-transform:translateY(-3px) ;
+     -ms-transform:translateY(-3px) ;
+      -o-transform:translateY(-3px) ;
+      box-shadow:0 8px 20px rgb(80, 155, 255)
 }
 
 /* ------------------- لیست پیشنهادات ------------------- */
@@ -334,7 +387,7 @@ main {
 /* ------------------- فوتر ------------------- */
 .info-message {
   font-style: italic;
-  color: var(--primary-color);
+  color: rgb(104, 104, 104);
   margin: 10px 0 30px;
   padding-top: 10px;
   border-top: 1px dashed var(--input-border);
@@ -342,7 +395,34 @@ main {
 
 footer {
   max-width: 980px;
-  margin: 0 auto 40px;
+  margin: 0 auto 30px;
   padding: 0 20px;
-  color: #6b7280;
+  color: #575a63;
+}
+.h1-search{
+  font-size: 2rem;
+  background: linear-gradient(270deg, #eaeaeb, #315a4d);
+  background-size: 600% 600%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 5s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+/*---------------------------*/
+#search-button{
+  margin-top: 20px;
+  height: 40px;
+  width: 940px;
+  background-color: #088d70;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  color: white;
 }
