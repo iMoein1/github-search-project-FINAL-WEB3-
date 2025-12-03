@@ -25,9 +25,18 @@ function initTheme() {
 
 function toggleTheme() {
   const isDark = body.classList.contains("dark-theme");
-  body.classList.toggle("dark-theme", !isDark);
-  body.classList.toggle("light-theme", isDark);
-  localStorage.setItem("theme", isDark ? "light" : "dark");
+
+  if (isDark) {
+    // اگر در حالت سورمه‌ای بود → برو به سفید
+    body.classList.remove("dark-theme");
+    body.classList.add("light-theme");
+    localStorage.setItem("theme", "light");
+  } else {
+    // اگر سفید بود → برو به سورمه‌ای
+    body.classList.remove("light-theme");
+    body.classList.add("dark-theme");
+    localStorage.setItem("theme", "dark");
+  }
 }
 
 // ---------------- پیام‌رسان عمومی ----------------
