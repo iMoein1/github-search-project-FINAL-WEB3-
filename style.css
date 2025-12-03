@@ -44,35 +44,13 @@
 body {
   position: relative;
   overflow-x: hidden;
+  background-color: #122440;
 }
 
-body::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at center, rgba(255, 110, 196,0.2), transparent 70%);
-  animation: floatBg 20s linear infinite;
-  z-index: 0;
-}
-
-@keyframes floatBg {
-  0% { transform: rotate(0deg) translateX(0) rotate(0deg); }
-  100% { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
-}
 
 header {
-  background-color: var(--card-background);
-  padding: 20px 40px;
-  border-bottom: 1px solid var(--input-border);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 50;
+  border-bottom: 1px double rgb(105, 104, 107);
+
 }
 
 .header-actions {
@@ -146,24 +124,16 @@ main {
 }
 
 /* ------------------- دکمه‌ها ------------------- */
-#search-button,
-#theme-toggle {
-  padding: 12px 18px;
-  background: linear-gradient(135deg, #4fa3ff, #8b5cf6);
-  color: white;
-  border: none;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  font-weight: 700;
-  letter-spacing: 0.2px;
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
+.img-them{
+  width: 20px;
+  height: 20px;
 }
 #search-form button:hover { transform:translateY(-3px) ;
    -webkit-transform:translateY(-3px) ;
     -moz-transform:translateY(-3px) ;
      -ms-transform:translateY(-3px) ;
       -o-transform:translateY(-3px) ;
-      box-shadow:0 8px 20px rgb(80, 155, 255,0.35)
+      box-shadow:0 8px 20px rgb(80, 155, 255)
 }
 
 /* ------------------- لیست پیشنهادات ------------------- */
@@ -376,11 +346,11 @@ footer {
   max-width: 980px;
   margin: 0 auto 40px;
   padding: 0 20px;
-  color: #6b7280;
+  color: #5d626d;
 }
 h1 {
   font-size: 3rem;
-  background: linear-gradient(270deg, #ff6ec4, #7873f5, #42f5ef, #ff6ec4);
+  background: linear-gradient(270deg, #44386e, #7873f5, #15434a, #315a4d);
   background-size: 600% 600%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
