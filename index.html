@@ -7,47 +7,81 @@
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body class="light-theme">
-  <header>
-    <h1>🔍 GitHub Profile Searcher</h1>
-    <div class="header-actions">
-      <button id="theme-toggle" aria-label="Toggle theme">Toggle Theme (Dark/Light)</button>
+
+<header class="navbar">
+  <div class="logo">GitHub Search</div>
+
+  <nav>
+    <a href="#">Search</a>
+    <a href="#">Profile</a>
+    <a href="#">Repositories</a>
+    <a href="#">About</a>
+  </nav>
+  <button id="theme-toggle" class="theme-btn"> <span class="sun">☼</span> </button>
+</header>
+
+<section class="hero">
+  <h1>Discover GitHub<br> <span>Developers</span></h1>
+  <p>Search for GitHub users and explore their profiles and repositories</p>
+
+  <form id="search-form" class="search-box">
+    <div class="search-input">
+      <span class="icon"><img src="./icons8-search-50.png" alt=""></span>
+      <input id="username-input" type="text" placeholder="Enter GitHub username..." />
     </div>
-  </header>
+    <button type="submit" class="search-btn">Search User</button>
+  </form>
 
-  <main>
-    <section class="search-section" aria-label="Search section">
-      <form id="search-form" novalidate>
-        <div class="search-input-container">
-          <input
-            type="text"
-            id="username-input"
-            placeholder="Enter a GitHub username..."
-            aria-autocomplete="list"
-            aria-controls="suggestions-list"
-            autocomplete="off"
-          />
-          <div id="suggestions-list" class="suggestions-list hidden" role="listbox"></div>
-        </div>
-        <button type="submit" id="search-button">Search</button>
-      </form>
+  <div id="message-area" class="message-area hidden"></div>
+  <div id="suggestions-list" class="suggestions-list hidden"></div>
+</section>
 
-      <div id="message-area" class="message-area hidden" role="alert"></div>
-    </section>
+<section id="profile-container" class="profile-container hidden">
+  <div id="profile-card" class="profile-card"></div>
+  <div id="repos-container" class="repos-container"></div>
+  <button id="load-more-btn" class="load-more-btn hidden">Load More</button>
+</section>
 
-    <section id="profile-container" class="profile-container hidden" aria-label="User profile">
-      <div id="profile-card"></div>
-      <div id="repos-container" class="repos-container"></div>
-    </section>
-  </main>
+<footer class="footer">
+  <div class="footer-wrapper">
+    <div class="footer-section">
+      <div class="footer-brand">
+        <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" class="footer-icon">
+        <span class="footer-title">GitHub Search</span>
+      </div>
+      <p class="footer-text">
+        Discover GitHub developers and explore their amazing projects with ease.
+      </p>
+    </div>
 
-  <footer>
-    <p class="info-message">
-      Tip: Type a few characters to see suggestions. If you hit the API rate limit, try again in a few minutes.
-    </p>
-  </footer>
+    <div class="footer-section">
+      <h4 class="footer-heading">Quick Links</h4>
+      <ul class="footer-list">
+        <li><a href="#">Search</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Repositories</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </div>
 
-  <script type="module" src="script.js"></script>
-  <script src="util/api.js"></script>
-  <script src="util/helpers.js"></script>
+    <div class="footer-section">
+      <h4 class="footer-heading">Resources</h4>
+      <ul class="footer-list">
+        <li><a href="#">GitHub API Docs</a></li>
+        <li><a href="#">GitHub</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 GitHub Search. All rights reserved.</p>
+    <span>Website Builder</span>
+  </div>
+</footer>
+
+<script type="module" src="util/api.js"></script>
+<script type="module" src="util/helpers.js"></script>
+<script type="module" src="script.js"></script>
+
 </body>
 </html>
