@@ -1,87 +1,130 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Professional GitHub Profile Searcher</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
-<body class="light-theme">
+<body>
 
-<header class="navbar">
-  <div class="logo">GitHub Search</div>
+<div class="app-container">
 
-  <nav>
-    <a href="#">Search</a>
-    <a href="#">Profile</a>
-    <a href="#">Repositories</a>
-    <a href="#">About</a>
-  </nav>
-  <button id="theme-toggle" class="theme-btn"> <span class="sun">☼</span> </button>
-</header>
+    <!-- Navbar -->
+  <nav class="glass">
+    <div class="nav-content">
+     <div class="nav-logo">
+      <svg width="28" height="28" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+      </svg> GitHub
+     </div>
 
-<section class="hero">
-  <h1>Discover GitHub<br> <span>Developers</span></h1>
-  <p>Search for GitHub users and explore their profiles and repositories</p>
-
-  <form id="search-form" class="search-box">
-    <div class="search-input">
-      <span class="icon"><img src="./icons8-search-50.png" alt=""></span>
-      <input id="username-input" type="text" placeholder="Enter GitHub username..." />
+     <div class="nav-links">
+      <a class="nav-link active" data-page="search">Search</a>
+       <a class="nav-link" data-page="profile">Profile</a>
+        <a class="nav-link" data-page="repositories">Repositories</a>
+         <a class="nav-link" data-page="about">About</a> 
+        <button class="theme-toggle" id="themeToggle">
+         <svg width="20" height="20" fill="currentColor" viewbox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" /></svg>
+      </button>
+     </div>
     </div>
-    <button type="submit" class="search-btn">Search User</button>
-  </form>
+   </nav>
 
-  <div id="message-area" class="message-area hidden"></div>
-  <div id="suggestions-list" class="suggestions-list hidden"></div>
-</section>
-
-<section id="profile-container" class="profile-container hidden">
-  <div id="profile-card" class="profile-card"></div>
-  <div id="repos-container" class="repos-container"></div>
-  <button id="load-more-btn" class="load-more-btn hidden">Load More</button>
-</section>
-
-<footer class="footer">
-  <div class="footer-wrapper">
-    <div class="footer-section">
-      <div class="footer-brand">
-        <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" class="footer-icon">
-        <span class="footer-title">GitHub Search</span>
+   <!-- Search Page -->
+   
+  <main id="searchPage" class="search-page">
+    <div class="hero-section">
+     <h1 class="hero-title">
+      <span id="mainTitle"></span>
+       <span class="hero-highlight" id="titleHighlight"></span></h1>
+     <p class="hero-subtitle" id="subtitle"></p>
+    </div>
+  <div class="search-container">
+    <div class="search-box glass">
+     <div class="search-input-wrapper">
+       <svg class="search-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+       </svg>
+       <input type="text" id="searchInput" class="search-input">
       </div>
-      <p class="footer-text">
-        Discover GitHub developers and explore their amazing projects with ease.
-      </p>
-    </div>
+     </div>
+  
+     <!-- Suggestions -->
 
-    <div class="footer-section">
-      <h4 class="footer-heading">Quick Links</h4>
-      <ul class="footer-list">
-        <li><a href="#">Search</a></li>
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">Repositories</a></li>
-        <li><a href="#">About</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-section">
-      <h4 class="footer-heading">Resources</h4>
-      <ul class="footer-list">
-        <li><a href="#">GitHub API Docs</a></li>
-        <li><a href="#">GitHub</a></li>
-      </ul>
-    </div>
+  <div id="suggestions" class="suggestions-list glass-light hidden"></div><!-- Error Message -->
+  <div id="errorContainer" class="hidden"></div><!-- Loading -->
+  <div id="searchLoading" class="loading-container hidden">
+  <div class="spinner"></div>
+    <p style="color: #9ca3af;">Searching...</p>
   </div>
-
-  <div class="footer-bottom">
-    <p>© 2025 GitHub Search. All rights reserved.</p>
-    <span>Website Builder</span>
   </div>
-</footer>
+   </main>
 
-<script type="module" src="util/api.js"></script>
-<script type="module" src="util/helpers.js"></script>
-<script type="module" src="script.js"></script>
+   <!-- Profile Page -->
 
+   <main id="profilePage" class="profile-page hidden">
+    <button class="back-button glass-light" id="backButton">
+     <svg width="20" height="20" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+     </svg> Back to Search </button>
+
+      <!-- Profile Card -->
+    <div class="profile-card glass">
+     <div class="profile-header">
+      <img id="profileAvatar" class="profile-avatar-large"/>
+      <div class="profile-info">
+       <h2 class="profile-name" id="profileName"></h2>
+       <p class="profile-username" id="profileUsername"></p>
+       <p class="profile-bio" id="profileBio"></p>
+       <div class="profile-meta" id="profileMeta"></div>
+       <a id="githubLink" href="" target="_blank" rel="noopener noreferrer" class="github-link">
+        <svg width="20" height="20" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+        </svg> View on GitHub </a>
+      </div>
+     </div>
+
+    <div class="stats-grid">
+      <div class="stat-card glass-light">
+       <div class="stat-number" id="reposCount" style="color: #14b8a6;">
+        0
+       </div>
+       <div class="stat-label">
+        Repositories
+       </div>
+      </div>
+      <div class="stat-card glass-light">
+       <div class="stat-number" id="followersCount" style="color: #06b6d4;">
+        0
+       </div>
+       <div class="stat-label">
+        Followers
+       </div>
+      </div>
+      <div class="stat-card glass-light">
+       <div class="stat-number" id="followingCount" style="color: #8b5cf6;">
+        0
+       </div>
+       <div class="stat-label">
+        Following
+       </div>
+      </div>
+     </div>
+    </div>
+
+    <!-- Repositories Section -->
+  <div class="repos-section">
+    <div class="section-header">
+      <h3 class="section-title" id="reposTitle"></h3>
+      <p class="section-subtitle" id="reposSubtitle"></p>
+    </div>
+  <div id="reposLoading" class="loading-container hidden">
+  <div class="spinner"></div>
+      <p style="color: #9ca3af;">Loading repositories...</p>
+  </div>
+    <div id="reposGrid" class="repos-grid"></div><!-- Pagination -->
+    <div id="pagination" class="pagination hidden"><button class="pagination-button" id="prevButton">Previous</button>
+    <div class="pagination-info" id="pageInfo"></div><button class="pagination-button" id="nextButton">Next</button>
+    </div>
+   </div>
+   </main>
+  </div>
+  <script src="scripts.js"></script>
 </body>
 </html>
